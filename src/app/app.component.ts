@@ -23,21 +23,8 @@ import { CartComponent } from './components/cart.component';
   template: `
     <mat-sidenav-container class="app-container">
       <mat-sidenav #cartDrawer mode="side" position="end" opened="false">
-        <h3>Your Cart</h3>
-        <div class="cart-content">
-          @if (cartService.getCartItems.length === 0){
-          <div>
-            <p>Your cart is empty. Start shopping!</p>
-          </div>
-          } @else {
-          <app-cart></app-cart>
-          }
-        </div>
-        <button mat-button color="primary" class="checkout-button">
-          Checkout
-        </button>
+        <app-cart></app-cart>
       </mat-sidenav>
-
       <mat-sidenav-content>
         <app-header [cartDrawer]="cartDrawer"></app-header>
         <main class="main-content">
