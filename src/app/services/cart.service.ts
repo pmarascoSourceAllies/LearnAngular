@@ -1,21 +1,26 @@
 import { EventEmitter, Injectable } from '@angular/core';
 import { output } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CartService {
   private cart: any[] = [];
+  private cartSource = new BehaviorSubject<any[]>([]);
+  cartItems$ = this.cartSource.asObservable();
 
   constructor() {}
 
-  cartUpdated = new EventEmitter<any[]>();
+  private emitCartItems() {
+    console.log('Cart:', this.cart);
+    this.cartSource.next(this.cart);
+  }
 
   addToCart(item: any) {
     this.cart.push(item);
     console.log('Item added to cart:', item);
-    console.log('Cart:', this.cart);
-    this.cartUpdated.emit(this.cart);
+    this.emitCartItems();
   }
 
   getCartItems() {
@@ -24,6 +29,6 @@ export class CartService {
 
   clearCart() {
     this.cart = [];
-    this.cartUpdated.emit(this.cart);
+    this.emitCartItems();
   }
 }

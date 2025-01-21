@@ -60,7 +60,7 @@ import { CartComponent } from './components/cart.component';
 export class AppComponent {
   constructor(public cartService: CartService) {
     this.cartItems = this.cartService.getCartItems();
-    this.cartService.cartUpdated.subscribe((cartItems) => {
+    this.cartService.cartItems$.subscribe((cartItems) => {
       this.cartItems = cartItems; // Update the cart items when the cart is updated
       console.log('Cart updated:', this.cartItems);
     });

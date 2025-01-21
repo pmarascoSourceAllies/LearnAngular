@@ -2,11 +2,10 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { CartService } from '../services/cart.service';
 import { CommonModule } from '@angular/common';
 import { MatListModule } from '@angular/material/list';
-import { MatSidenav } from '@angular/material/sidenav';
 
 @Component({
   selector: 'app-cart',
-  imports: [CommonModule, MatListModule, MatSidenav],
+  imports: [CommonModule, MatListModule],
   template: `
     <h3>Your Cart</h3>
     <div class="cart-content">
@@ -33,6 +32,7 @@ import { MatSidenav } from '@angular/material/sidenav';
       mat-button
       color="primary"
       class="checkout-button"
+      [disabled]="cartItems.length === 0"
       (click)="checkout()"
     >
       Checkout
@@ -40,10 +40,14 @@ import { MatSidenav } from '@angular/material/sidenav';
   `,
 })
 export class CartComponent implements OnInit {
-  @ViewChild('cartDrawer') cartDrawer!: MatSidenav;
   cartItems: any[] = [];
 
-  constructor(private cartService: CartService) {}
+  constructor(private cartService: CartService) {
+    this.cartService.cartItems$.subscribe((cartItems) => {
+      this.cartItems = cartItems; // Update the cart items when the cart is updated
+      console.log('Cart updated:', this.cartItems);
+    });
+  }
 
   ngOnInit() {
     this.cartItems = this.cartService.getCartItems();
@@ -52,7 +56,6 @@ export class CartComponent implements OnInit {
     this.cartService.clearCart();
   }
   toggle() {
-    this.cartDrawer.toggle();
     console.log('Toggled cart drawer');
   }
 }
