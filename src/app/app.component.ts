@@ -1,13 +1,12 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { NgFor } from '@angular/common';
 import { CartService } from './services/cart.service';
 import { MatSidenavModule } from '@angular/material/sidenav';
-import { HeaderComponent } from './components/header/header.component';
-import { FooterComponent } from './components/footer/footer.component';
+import { HeaderComponent } from './components/header.component';
+import { FooterComponent } from './components/footer.component';
 import { ProductListComponent } from './components/products/product-list.component';
 import { MatButtonModule } from '@angular/material/button';
 import { BUSINESS_NAME } from './shared/constants';
+import { CartComponent } from './components/cart.component';
 
 @Component({
   selector: 'app-root',
@@ -18,8 +17,7 @@ import { BUSINESS_NAME } from './shared/constants';
     FooterComponent,
     ProductListComponent,
     MatButtonModule,
-    NgFor,
-    CommonModule,
+    CartComponent,
   ],
   providers: [CartService],
   template: `
@@ -32,16 +30,7 @@ import { BUSINESS_NAME } from './shared/constants';
             <p>Your cart is empty. Start shopping!</p>
           </div>
           } @else {
-          <div>
-            <ul>
-              <li *ngFor="let item of cartService.getCartItems()">
-                <div class="cart-item">
-                  <span>{{ item.name }}</span>
-                  <span>{{ item.price | currency }}</span>
-                </div>
-              </li>
-            </ul>
-          </div>
+          <app-cart></app-cart>
           }
         </div>
         <button mat-button color="primary" class="checkout-button">
@@ -84,6 +73,10 @@ import { BUSINESS_NAME } from './shared/constants';
 export class AppComponent {
   constructor(public cartService: CartService) {
     this.cartItems = this.cartService.getCartItems();
+    this.cartService.cartUpdated.subscribe((cartItems) => {
+      this.cartItems = cartItems; // Update the cart items when the cart is updated
+      console.log('Cart updated:', this.cartItems);
+    });
   }
   cartItems: any[] = [];
   businessName = BUSINESS_NAME;

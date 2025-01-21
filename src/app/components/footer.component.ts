@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { BUSINESS_NAME } from '../../shared/constants';
+import { BUSINESS_NAME } from '../shared/constants';
 
 @Component({
   selector: 'app-footer',
@@ -8,7 +8,7 @@ import { BUSINESS_NAME } from '../../shared/constants';
   imports: [MatToolbarModule],
   template: `
     <mat-toolbar color="accent" class="footer">
-      <span>© 2025 {{businessName}}. All rights reserved.</span>
+      <span>© 2025 {{ businessName }}. All rights reserved.</span>
     </mat-toolbar>
   `,
   styles: [
