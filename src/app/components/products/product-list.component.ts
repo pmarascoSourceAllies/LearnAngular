@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { NgFor, CommonModule } from '@angular/common';
+import { CartService } from '../../services/cart.service';
 
 @Component({
   selector: 'product-list',
@@ -16,7 +17,7 @@ import { NgFor, CommonModule } from '@angular/common';
           <p>{{ product.description }}</p>
           <p><strong>{{ product.price | currency }}</strong></p>
         </mat-card-content>
-        <button mat-button color="primary">Add to Cart</button>
+        <button mat-button color="primary" (click)="addToCart(product)">Add to Cart</button>
       </mat-card>
     </div>
   `,
@@ -54,4 +55,10 @@ export class ProductListComponent {
       image: 'assets/mug.jpg',
     },
   ];
+
+  constructor(private cartService: CartService) {}
+
+  addToCart(product: any) {
+    this.cartService.addToCart(product);
+  }
 }
