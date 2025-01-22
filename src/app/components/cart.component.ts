@@ -16,7 +16,6 @@ import { Product } from '../models/product.model';
       </div>
       } @else {
 
-      <h2>Cart</h2>
       <mat-list>
         @for (item of cartItems; track item.product.name) {
         <mat-list-item lines="5" class="cart-item">
@@ -26,11 +25,13 @@ import { Product } from '../models/product.model';
             alt="{{ item.product.name }}"
             class="product-image"
           />
-          <div mat-line class="item-details">
-            x{{ item.quantity }} {{ item.product.name }}
-          </div>
-          <div mat-line class="item-price">
-            {{ item.product.price * item.quantity | currency }}
+          <div class="item-details">
+            <div class="item-name">
+              x{{ item.quantity }} {{ item.product.name }}
+            </div>
+            <div class="item-price">
+              {{ item.product.price * item.quantity | currency }}
+            </div>
           </div>
           <mat-divider></mat-divider>
         </mat-list-item>
@@ -52,6 +53,7 @@ import { Product } from '../models/product.model';
   styles: [
     `
       .cart-content {
+        text-align: right;
         padding: 16px;
         font-family: 'Merriweather', serif; // Apply a cozy font for better readability
         background-color: #fefaf0; // Light cozy background color
@@ -79,15 +81,21 @@ import { Product } from '../models/product.model';
 
       .item-details {
         flex: 1;
-        font-size: 1.2rem; // Increase font size for readability
-        margin-right: 16px;
-        color: #5a3e36; // Warm, cozy color
+        display: flex;
+        flex-direction: column;
+        justify-content: right;
+      }
+
+      .item-name {
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: #5a3e36;
       }
 
       .item-price {
-        font-weight: bold;
-        color: #8b4513; // Complementary to the design
         font-size: 1.2rem;
+        font-weight: bold;
+        color: #8b4513;
       }
 
       .checkout-button {
