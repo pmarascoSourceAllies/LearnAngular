@@ -16,7 +16,7 @@ import { BUSINESS_NAME } from '../shared/constants';
       .footer {
         justify-content: center;
         text-align: center;
-        position: sticky;
+        position: relative;
         bottom: 0;
       }
     `,
