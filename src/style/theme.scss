@@ -1,0 +1,21 @@
+@use '@angular/material' as mat;
+@use './src_theme-colors.scss' as gen-theme; // location of generated file
+@import url('https://fonts.googleapis.com/css2?family=Indie+Flower&family=Merriweather:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@300;400;700&display=swap');
+
+$custom-typography: (
+  brand-family: 'Indie Flower, Quicksand',
+  plain-family: 'Merriweather, Pacifico',
+  bold-weight: 700,
+  medium-weight: 500,
+  regular-weight: 400,
+);
+
+  // Update the theme
+$custom-theme: (
+    (color: (primary: gen-theme.$primary-palette,
+        tertiary: gen-theme.$tertiary-palette,
+        ),
+        typography: $custom-typography,
+    )
+);

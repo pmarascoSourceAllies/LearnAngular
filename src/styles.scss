@@ -1,22 +1,9 @@
 @use '@angular/material' as mat;
-@use './style/src_theme-colors.scss' as my-theme; // location of generated file
-
-$custom-typography: (
-  brand-family: 'Roboto, Arial, sans-serif',
-  plain-family: 'Arial, sans-serif',
-  bold-weight: 700,
-  medium-weight: 500,
-  regular-weight: 400,
-  use-system-variables: true, // Optional, enables CSS variable usage
-);
-
+@use './style/src_theme-colors.scss' as gen-theme; // location of generated file
+@use './style/theme.scss' as my-theme; // location of my file
 html {
-  @include mat.theme((
-    color: (
-      primary: my-theme.$primary-palette,
-      tertiary: my-theme.$tertiary-palette,
-    ),
-    typography: $custom-typography,
-    density: 0,
-  ));
+  @include mat.theme(my-theme.$custom-theme);
+}
+mat-card-content{
+  @include mat.theme(my-theme.$custom-theme);
 }

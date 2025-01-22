@@ -7,6 +7,7 @@ import { ProductListComponent } from './components/products/product-list.compone
 import { MatButtonModule } from '@angular/material/button';
 import { BUSINESS_NAME } from './shared/constants';
 import { CartComponent } from './components/cart.component';
+import { BannerComponent } from './components/banner.component';
 
 @Component({
   selector: 'app-root',
@@ -18,6 +19,7 @@ import { CartComponent } from './components/cart.component';
     ProductListComponent,
     MatButtonModule,
     CartComponent,
+    BannerComponent,
   ],
   providers: [CartService],
   template: `
@@ -27,6 +29,7 @@ import { CartComponent } from './components/cart.component';
       </mat-sidenav>
       <mat-sidenav-content>
         <app-header [cartDrawer]="cartDrawer"></app-header>
+        <app-banner></app-banner>
         <main class="main-content">
           <h1>Welcome to {{ businessName }}</h1>
           <product-list></product-list>
@@ -58,13 +61,5 @@ import { CartComponent } from './components/cart.component';
   ],
 })
 export class AppComponent {
-  constructor(public cartService: CartService) {
-    this.cartItems = this.cartService.getCartItems();
-    this.cartService.cartItems$.subscribe((cartItems) => {
-      this.cartItems = cartItems; // Update the cart items when the cart is updated
-      console.log('Cart updated:', this.cartItems);
-    });
-  }
-  cartItems: any[] = [];
   businessName = BUSINESS_NAME;
 }

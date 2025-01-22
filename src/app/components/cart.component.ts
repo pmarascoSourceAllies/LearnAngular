@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { CartService } from '../services/cart.service';
 import { CommonModule } from '@angular/common';
 import { MatListModule } from '@angular/material/list';
+import { Product } from '../models/product.model';
 
 @Component({
   selector: 'app-cart',
@@ -17,10 +18,12 @@ import { MatListModule } from '@angular/material/list';
 
       <h2>Cart</h2>
       <mat-list>
-        @for (item of cartItems; track item.name) {
+        @for (item of cartItems; track item.product.name) {
         <mat-list-item>
-          <div mat-line>{{ item.name }}</div>
-          <div mat-line>{{ item.price | currency }}</div>
+          <div mat-line>x{{ item.quantity }} {{ item.product.name }}</div>
+          <div mat-line>
+            {{ item.product.price * item.quantity | currency }}
+          </div>
           <mat-divider></mat-divider>
         </mat-list-item>
         }
@@ -40,7 +43,7 @@ import { MatListModule } from '@angular/material/list';
   `,
 })
 export class CartComponent implements OnInit {
-  cartItems: any[] = [];
+  cartItems: { product: Product; quantity: number }[] = [];
 
   constructor(private cartService: CartService) {
     this.cartService.cartItems$.subscribe((cartItems) => {
