@@ -8,6 +8,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { BUSINESS_NAME } from './shared/constants';
 import { CartComponent } from './components/cart/cart.component';
 import { BannerComponent } from './components/banner/banner.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @Component({
   selector: 'app-root',
@@ -20,6 +21,7 @@ import { BannerComponent } from './components/banner/banner.component';
     MatButtonModule,
     CartComponent,
     BannerComponent,
+    BrowserAnimationsModule,
   ],
   providers: [CartService],
   templateUrl: './app.component.html',

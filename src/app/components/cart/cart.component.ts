@@ -1,4 +1,11 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  Signal,
+  ViewChild,
+  computed,
+  signal,
+} from '@angular/core';
 import { CartService } from '../../services/cart.service';
 import { CommonModule } from '@angular/common';
 import { MatListModule } from '@angular/material/list';
@@ -10,25 +17,25 @@ import { Product } from '../../models/product.model';
   templateUrl: './cart.component.html',
   styleUrls: ['././cart.component.scss'],
 })
-export class CartComponent implements OnInit {
-  cartItems: { product: Product; quantity: number }[] = [];
+export class CartComponent {
+  cartItems: Signal<{ product: Product; quantity: number }[]>;
+
+  // Computed signal for the total cost
+  totalCost: Signal<number>;
 
   constructor(private cartService: CartService) {
-    this.cartService.cartItems$.subscribe((cartItems) => {
-      this.cartItems = cartItems; // Update the cart items when the cart is updated
-      console.log('Cart updated:', this.cartItems);
-    });
+    // Signal for cart items directly from the service
+    this.cartItems = this.cartService.cartItems;
+    this.totalCost = computed(() =>
+      this.cartItems().reduce(
+        (total, item) => total + item.product.price * item.quantity,
+        0
+      )
+    );
   }
 
-  ngOnInit() {
-    this.cartItems = this.cartService.getCartItems();
-  }
-  checkout() {
+  // Method to clear the cart
+  checkout(): void {
     this.cartService.clearCart();
-  }
-  calculateTotal(): number {
-    return this.cartItems.reduce((total, item) => {
-      return total + item.product.price * item.quantity;
-    }, 0);
   }
 }

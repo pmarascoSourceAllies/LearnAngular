@@ -1,42 +1,46 @@
-import { EventEmitter, Injectable } from '@angular/core';
-import { output } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { Injectable, signal } from '@angular/core';
 import { Product } from '../models/product.model';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CartService {
-  private cart: { product: Product; quantity: number }[] = [];
-  private cartSource = new BehaviorSubject<any[]>([]);
-  cartItems$ = this.cartSource.asObservable();
+  // Define a signal for the cart state with an initial value of an empty array
+  private cartSignal = signal<{ product: Product; quantity: number }[]>([]);
+
+  // Expose the signal for reading
+  cartItems = this.cartSignal;
 
   constructor() {}
 
-  private emitCartItems() {
-    console.log('Cart:', this.cart);
-    this.cartSource.next(this.cart);
-  }
-
-  addToCart(item: Product) {
-    const existingItem = this.cart.find(
+  // Add a product to the cart
+  addToCart(item: Product): void {
+    const currentCart = this.cartSignal();
+    const existingItem = currentCart.find(
       (cartItem) => cartItem.product.id === item.id
     );
+
     if (existingItem) {
-      existingItem.quantity++; // Increment quantity
+      // Increment the quantity of the existing item
+      existingItem.quantity++;
     } else {
-      this.cart.push({ product: item, quantity: 1 }); // Add new item
+      // Add a new item to the cart
+      currentCart.push({ product: item, quantity: 1 });
     }
+
+    // Update the signal with the new cart state
+    this.cartSignal.set([...currentCart]);
     console.log('Item added to cart:', item);
-    this.emitCartItems();
   }
 
-  getCartItems() {
-    return this.cart;
+  // Get the current cart items (read directly from the signal)
+  getCartItems(): { product: Product; quantity: number }[] {
+    return this.cartSignal();
   }
 
-  clearCart() {
-    this.cart = [];
-    this.emitCartItems();
+  // Clear the cart
+  clearCart(): void {
+    this.cartSignal.set([]); // Reset the signal to an empty array
+    console.log('Cart cleared');
   }
 }

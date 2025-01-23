@@ -8,7 +8,7 @@
   } @else {
 
   <mat-list>
-    @for (item of cartItems; track item.product.name) {
+    @for (item of cartItems(); track item.product.name) {
     <div class="cart-item">
       <img
         matListAvatar
@@ -32,7 +32,7 @@
   <!-- Cart Total -->
   <div class="cart-total-container">
     <h4>Total:</h4>
-    <p class="cart-total">{{ calculateTotal() | currency }}</p>
+    <p class="cart-total">{{ totalCost() | currency }}</p>
   </div>
   }
 </div>
