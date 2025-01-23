@@ -26,7 +26,9 @@ export class CartComponent implements OnInit {
   checkout() {
     this.cartService.clearCart();
   }
-  toggle() {
-    console.log('Toggled cart drawer');
+  calculateTotal(): number {
+    return this.cartItems.reduce((total, item) => {
+      return total + item.product.price * item.quantity;
+    }, 0);
   }
 }

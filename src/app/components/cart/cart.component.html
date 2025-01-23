@@ -1,43 +1,48 @@
 
-    <h3>Your Cart</h3>
-    <div class="cart-content">
-      @if (cartItems.length === 0){
-      <div>
-        <p>Your cart is empty. Start shopping!</p>
-      </div>
-      } @else {
+<h3>Your Cart</h3>
+<div class="cart-content">
+  @if (cartItems.length === 0){
+  <div>
+    <p>Your cart is empty. Start shopping!</p>
+  </div>
+  } @else {
 
-      <mat-list>
-        @for (item of cartItems; track item.product.name) {
-        <div class="cart-item">
-          <img
-            matListAvatar
-            [src]="item.product.image"
-            alt="{{ item.product.name }}"
-            class="product-image"
-          />
-          <div class="item-details">
-            <div class="item-name">
-              x{{ item.quantity }} {{ item.product.name }}
-            </div>
-            <div class="item-price">
-              {{ item.product.price * item.quantity | currency }}
-            </div>
-          </div>
-          <mat-divider></mat-divider>
+  <mat-list>
+    @for (item of cartItems; track item.product.name) {
+    <div class="cart-item">
+      <img
+        matListAvatar
+        [src]="item.product.image"
+        alt="{{ item.product.name }}"
+        class="product-image"
+      />
+      <div class="item-details">
+        <div class="item-name">
+          x{{ item.quantity }} {{ item.product.name }}
         </div>
-        }
-      </mat-list>
-      }
+        <div class="item-price">
+          {{ item.product.price * item.quantity | currency }}
+        </div>
+      </div>
+      <mat-divider></mat-divider>
     </div>
+    }
+  </mat-list>
+  <!-- Cart Total -->
+  <!-- Cart Total -->
+  <div class="cart-total-container">
+    <h4>Total:</h4>
+    <p class="cart-total">{{ calculateTotal() | currency }}</p>
+  </div>
+  }
+</div>
 
-    <button
-      mat-button
-      color="primary"
-      class="checkout-button"
-      [disabled]="cartItems.length === 0"
-      (click)="checkout()"
-    >
-      Checkout
-    </button>
-  
+<button
+  mat-button
+  color="primary"
+  class="checkout-button"
+  [disabled]="cartItems.length === 0"
+  (click)="checkout()"
+>
+  Checkout
+</button>

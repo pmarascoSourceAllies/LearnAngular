@@ -58,3 +58,21 @@
     background-color: #ffa726;
   }
 }
+
+.cart-total-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 1rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.cart-total-container h4 {
+  margin: 0;
+  margin-right: 0.5rem;
+}
+
+.cart-total {
+  color: #333;
+}
