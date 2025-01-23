@@ -23,7 +23,7 @@ import { BannerComponent } from './components/banner/banner.component';
   ],
   providers: [CartService],
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
+  styleUrls: ['././app.component.scss'],
 })
 export class AppComponent {
   businessName = BUSINESS_NAME;

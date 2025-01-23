@@ -10,7 +10,7 @@ import { Product } from '../../models/product.model';
   standalone: true,
   imports: [MatCardModule, MatButtonModule, CommonModule],
   templateUrl: './product-list.component.html',
-  styleUrls: ['./product-list.component.css'],
+  styleUrls: ['././product-list.component.scss'],
 })
 export class ProductListComponent {
   products: Product[] = [

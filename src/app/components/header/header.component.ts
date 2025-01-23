@@ -8,7 +8,7 @@ import { BUSINESS_NAME } from '../../shared/constants';
   standalone: true,
   imports: [MatToolbarModule, MatButtonModule],
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css'],
+  styleUrls: ['././header.component.scss'],
 })
 export class HeaderComponent {
   businessName = BUSINESS_NAME;

@@ -8,7 +8,7 @@ import { Product } from '../../models/product.model';
   selector: 'app-cart',
   imports: [CommonModule, MatListModule],
   templateUrl: './cart.component.html',
-  styleUrls: ['./cart.component.css'],
+  styleUrls: ['././cart.component.scss'],
 })
 export class CartComponent implements OnInit {
   cartItems: { product: Product; quantity: number }[] = [];

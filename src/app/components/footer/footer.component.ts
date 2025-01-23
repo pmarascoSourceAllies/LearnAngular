@@ -7,7 +7,7 @@ import { BUSINESS_NAME } from '../../shared/constants';
   standalone: true,
   imports: [MatToolbarModule],
   templateUrl: './footer.component.html',
-  styleUrls: ['./footer.component.css'],
+  styleUrls: ['././footer.component.scss'],
 })
 export class FooterComponent {
   businessName = BUSINESS_NAME;
