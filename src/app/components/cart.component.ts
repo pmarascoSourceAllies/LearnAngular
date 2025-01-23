@@ -18,7 +18,7 @@ import { Product } from '../models/product.model';
 
       <mat-list>
         @for (item of cartItems; track item.product.name) {
-        <mat-list-item lines="5" class="cart-item">
+        <div class="cart-item">
           <img
             matListAvatar
             [src]="item.product.image"
@@ -34,7 +34,7 @@ import { Product } from '../models/product.model';
             </div>
           </div>
           <mat-divider></mat-divider>
-        </mat-list-item>
+        </div>
         }
       </mat-list>
       }
@@ -53,7 +53,6 @@ import { Product } from '../models/product.model';
   styles: [
     `
       .cart-content {
-        text-align: right;
         padding: 16px;
         font-family: 'Merriweather', serif; // Apply a cozy font for better readability
         background-color: #fefaf0; // Light cozy background color
@@ -63,7 +62,8 @@ import { Product } from '../models/product.model';
 
       .cart-item {
         display: flex;
-        align-items: center;
+        flex-direction: row;
+        align-items: flex-end;
         padding: 10px 0;
         border-bottom: 1px solid #eaeaea;
         &:last-child {

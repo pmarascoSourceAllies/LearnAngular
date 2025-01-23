@@ -11,11 +11,12 @@ $custom-typography: (
   regular-weight: 400,
 );
 
-  // Update the theme
+// Update the theme
 $custom-theme: (
-    (color: (primary: gen-theme.$primary-palette,
+    (color: (
+        primary: gen-theme.$primary-palette,
         tertiary: gen-theme.$tertiary-palette,
-        ),
-        typography: $custom-typography,
+      ),
+      typography: $custom-typography,
     )
 );

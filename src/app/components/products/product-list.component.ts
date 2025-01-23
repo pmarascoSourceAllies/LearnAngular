@@ -41,9 +41,6 @@ import { Product } from '../../models/product.model';
         grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
         gap: 16px;
       }
-      .mat-mdc-card-content {
-        font-family: 'Indie Flower' !important;
-      }
       .product-card {
         max-width: 100%;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);

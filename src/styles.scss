@@ -1,9 +1,7 @@
 @use '@angular/material' as mat;
 @use './style/src_theme-colors.scss' as gen-theme; // location of generated file
 @use './style/theme.scss' as my-theme; // location of my file
-html {
-  @include mat.theme(my-theme.$custom-theme);
-}
-mat-card-content{
+
+*{
   @include mat.theme(my-theme.$custom-theme);
 }

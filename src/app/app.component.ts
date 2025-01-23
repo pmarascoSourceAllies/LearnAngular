@@ -55,7 +55,6 @@ import { BannerComponent } from './components/banner.component';
         padding: 16px;
         background: #fefae0;
         flex-grow: 1;
-        font-family: 'Indie Flower';
       }
       .cart-content {
         padding: 16px;

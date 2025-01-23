@@ -136,6 +136,23 @@ $_rest: (
 $primary-palette: map.merge(map.get($_palettes, primary), $_rest);
 $tertiary-palette: map.merge(map.get($_palettes, tertiary), $_rest);
 
+$custom-typography: (
+  brand-family: 'Indie Flower, Quicksand',
+  plain-family: 'Merriweather, Pacifico',
+  bold-weight: 700,
+  medium-weight: 500,
+  regular-weight: 400,
+);
+
+  // Update the theme
+$custom-theme: (
+    (color: (primary: $primary-palette,
+        tertiary:$tertiary-palette,
+        ),
+        typography: $custom-typography,
+    )
+);
+
 @function _high-contrast-value($light, $dark, $theme-type) {
   @if ($theme-type == light) {
     @return $light;
