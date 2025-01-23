@@ -2,6 +2,8 @@
 @use './style/src_theme-colors.scss' as gen-theme; // location of generated file
 @use './style/theme.scss' as my-theme; // location of my file
 
+
 *{
+  @include mat.core();
   @include mat.theme(my-theme.$custom-theme);
 }

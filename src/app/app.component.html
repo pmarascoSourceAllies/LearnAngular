@@ -1,0 +1,22 @@
+
+    <mat-sidenav-container class="app-container">
+      <mat-sidenav #cartDrawer mode="side" position="end" opened="false">
+        <app-cart></app-cart>
+      </mat-sidenav>
+      <mat-sidenav-content>
+        <app-header [cartDrawer]="cartDrawer"></app-header>
+        <app-banner></app-banner>
+
+        <div class="section-divider">
+          <span>Welcome to {{ businessName }}</span>
+          <span>Explore Our Products</span>
+        </div>
+
+        <main class="main-content">
+          <h2>Items</h2>
+          <product-list></product-list>
+        </main>
+        <app-footer></app-footer>
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+  

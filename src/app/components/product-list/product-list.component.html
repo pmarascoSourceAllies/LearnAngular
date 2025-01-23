@@ -1,0 +1,25 @@
+
+    <div class="product-grid">
+      @for (product of products; track product.id) {
+      <mat-card class="product-card">
+        <img mat-card-image [src]="product.image" [alt]="product.name" />
+        <mat-card-title>{{ product.name }}</mat-card-title>
+        <mat-card-content class="content">
+          <p>{{ product.description }}</p>
+        </mat-card-content>
+        <div class="filler"></div>
+        <mat-card-actions class="footer">
+          <strong>{{ product.price | currency }}</strong>
+          <button
+            mat-button
+            color="primary"
+            (click)="addToCart(product)"
+            class="add-to-cart-button"
+          >
+            Add to Cart
+          </button>
+        </mat-card-actions>
+      </mat-card>
+      }
+    </div>
+  

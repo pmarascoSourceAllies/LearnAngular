@@ -1,0 +1,15 @@
+.header-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  background-color: #ffffff; /* Make sure the header has a white background */
+}
+.spacer {
+  flex: 1 1 auto;
+}
+.brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333333; /* Darker color for text contrast */
+}

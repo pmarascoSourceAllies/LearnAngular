@@ -1,0 +1,61 @@
+.cart-content {
+        padding: 16px;
+        font-family: 'Merriweather', serif; // Apply a cozy font for better readability
+        background-color: #fefaf0; // Light cozy background color
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); // Subtle shadow for depth
+      }
+
+      .cart-item {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-end;
+        padding: 10px 0;
+        border-bottom: 1px solid #eaeaea;
+        &:last-child {
+          border-bottom: none;
+        }
+      }
+
+      .product-image {
+        width: 60px;
+        height: 60px;
+        object-fit: cover;
+        border-radius: 6px; // Add rounded corners
+        margin-right: 16px;
+      }
+
+      .item-details {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: right;
+      }
+
+      .item-name {
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: #5a3e36;
+      }
+
+      .item-price {
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: #8b4513;
+      }
+
+      .checkout-button {
+        width: 100%;
+        margin-top: 16px;
+        padding: 12px;
+        font-size: 1.1rem;
+        background-color: #ffcc80; // Warm, inviting color
+        border-radius: 8px;
+        color: #fff;
+        border: none;
+        transition: background-color 0.3s;
+        &:hover {
+          background-color: #ffa726;
+        }
+      }
+    `,
