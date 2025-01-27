@@ -59,6 +59,7 @@ export class HeaderComponent {
 
   // Method to navigate to the cart
   navigateToCart(): void {
-    this.router.navigate(['/cart']);
+    // this.router.navigate(['/cart']);
+    this.cartDrawer.toggle();
   }
 }
