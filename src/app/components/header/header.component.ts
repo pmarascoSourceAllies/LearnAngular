@@ -1,8 +1,8 @@
-import { Component, Input, computed } from '@angular/core';
+import { Component, effect, Input, computed } from '@angular/core';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
-import { Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { CartService } from '../../services/cart.service';
 import {
   trigger,
@@ -16,7 +16,7 @@ import { BUSINESS_NAME } from '../../shared/constants';
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [MatToolbarModule, MatButtonModule, MatIconModule],
+  imports: [MatToolbarModule, MatButtonModule, MatIconModule, RouterModule],
   templateUrl: './header.component.html',
   styleUrls: ['././header.component.scss'],
   animations: [
@@ -47,7 +47,12 @@ export class HeaderComponent {
   // Computed signal for cart item count
   cartItemCount = computed(() => this.cartService.cartItems().length);
 
-  constructor(private router: Router, private cartService: CartService) {}
+  constructor(private router: Router, private cartService: CartService) {
+    effect(() => {
+      const count = this.cartItemCount(); // Track cart item count as dependency
+      this.animateCartButton(); // Pass the count for animation
+    });
+  }
 
   // Method to animate the cart button
   animateCartButton() {
@@ -60,6 +65,7 @@ export class HeaderComponent {
   // Method to navigate to the cart
   navigateToCart(): void {
     // this.router.navigate(['/cart']);
+    this.animateCartButton();
     this.cartDrawer.toggle();
   }
 }

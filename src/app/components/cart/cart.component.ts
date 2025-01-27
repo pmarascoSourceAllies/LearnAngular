@@ -1,6 +1,6 @@
 import {
   Component,
-  OnInit,
+  effect,
   Signal,
   ViewChild,
   computed,
@@ -22,6 +22,7 @@ export class CartComponent {
 
   // Computed signal for the total cost
   totalCost: Signal<number>;
+  cartSevice: any;
 
   constructor(private cartService: CartService) {
     // Signal for cart items directly from the service
@@ -32,6 +33,10 @@ export class CartComponent {
         0
       )
     );
+    effect(() => {
+      console.log('Current cart Items:', this.cartItems());
+      console.log('Total cost:', this.totalCost());
+    });
   }
 
   // Method to clear the cart

@@ -1,4 +1,4 @@
-import { Injectable, signal } from '@angular/core';
+import { Injectable, signal, WritableSignal } from '@angular/core';
 import { Product } from '../models/product.model';
 
 @Injectable({
@@ -6,7 +6,8 @@ import { Product } from '../models/product.model';
 })
 export class CartService {
   // Define a signal for the cart state with an initial value of an empty array
-  private cartSignal = signal<{ product: Product; quantity: number }[]>([]);
+  private cartSignal: WritableSignal<{ product: Product; quantity: number }[]> =
+    signal([]);
 
   // Expose the signal for reading
   cartItems = this.cartSignal;
@@ -36,6 +37,15 @@ export class CartService {
   // Get the current cart items (read directly from the signal)
   getCartItems(): { product: Product; quantity: number }[] {
     return this.cartSignal();
+  }
+  // Get the current cart items (read directly from the signal)
+  getCartTotal(): number {
+    let total: number = 10;
+    total = this.cartItems().reduce(
+      (total, item) => total + item.product.price * item.quantity,
+      0
+    );
+    return total;
   }
 
   // Clear the cart

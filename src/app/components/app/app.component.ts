@@ -8,6 +8,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { BUSINESS_NAME } from '../../shared/constants';
 import { CartComponent } from '../cart/cart.component';
 import { BannerComponent } from '../banner/banner.component';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -16,7 +17,7 @@ import { BannerComponent } from '../banner/banner.component';
     MatSidenavModule,
     HeaderComponent,
     FooterComponent,
-    ProductListComponent,
+    RouterModule,
     MatButtonModule,
     CartComponent,
     BannerComponent,
