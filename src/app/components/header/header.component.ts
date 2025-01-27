@@ -45,7 +45,11 @@ export class HeaderComponent {
   cartButtonState = 'normal';
 
   // Computed signal for cart item count
-  cartItemCount = computed(() => this.cartService.cartItems().length);
+  cartItemCount = computed(() =>
+    this.cartService
+      .cartItems()
+      .reduce((total, item) => total + item.quantity, 0)
+  );
 
   constructor(private router: Router, private cartService: CartService) {
     effect(() => {
@@ -64,8 +68,6 @@ export class HeaderComponent {
 
   // Method to navigate to the cart
   navigateToCart(): void {
-    // this.router.navigate(['/cart']);
-    this.animateCartButton();
     this.cartDrawer.toggle();
   }
 }
