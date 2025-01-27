@@ -34,20 +34,6 @@ export class CartService {
     console.log('Item added to cart:', item);
   }
 
-  // Get the current cart items (read directly from the signal)
-  getCartItems(): { product: Product; quantity: number }[] {
-    return this.cartSignal();
-  }
-  // Get the current cart items (read directly from the signal)
-  getCartTotal(): number {
-    let total: number = 10;
-    total = this.cartItems().reduce(
-      (total, item) => total + item.product.price * item.quantity,
-      0
-    );
-    return total;
-  }
-
   // Clear the cart
   clearCart(): void {
     this.cartSignal.set([]); // Reset the signal to an empty array
