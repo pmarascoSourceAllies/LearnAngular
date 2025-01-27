@@ -13,3 +13,16 @@
   font-weight: bold;
   color: #333333; /* Darker color for text contrast */
 }
+.cart-button {
+  margin-right: 16px;
+}
+.cart-badge{
+  background-color: #FFA804; /* Orange color */
+  color: #ffffff; /* White text */
+  border-radius: 50%; /* Circular shape */
+  padding: 4px 8px; /* Padding around text */
+  font-size: 0.8rem; /* Smaller text */
+  position: absolute; /* Position badge relative to cart button */
+  top: -8px; /* Move badge up */
+  right: -8px; /* Move badge right */
+}

@@ -7,6 +7,12 @@
   @include mat.core();
   @include mat.theme(my-theme.$custom-theme);
 }
+html{
+  overflow: hidden;
+}
+body{
+  overflow: auto;
+}
 .app-container {
   height: 100vh;
   display: flex;
@@ -26,28 +32,18 @@
 }
 
 .section-divider {
+  background-color: #FFA804; 
   text-align: center;
-  margin: 32px 0;
+  padding: 32px 0;
   position: relative;
 
-  span {
-    background-color: #fff8e1; /* Match page background */
-    color: #5c4033;
+  span {/* Match page background */
+    color: #fff8e1;
+    font-family: 'Brasika Display';
     font-weight: bold;
     padding: 0 12px;
     font-size: 1.2rem;
     position: relative;
     z-index: 1;
-  }
-
-  &::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background-color: #e0e0e0;
-    z-index: 0;
   }
 }

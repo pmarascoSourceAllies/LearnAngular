@@ -2,10 +2,29 @@
 @use './src_theme-colors.scss' as gen-theme; // location of generated file
 @import url('https://fonts.googleapis.com/css2?family=Indie+Flower&family=Merriweather:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@300;400;700&display=swap');
+@font-face {
+  font-family: 'Brasika Display';
+  src: url('/assets/fonts/Brasika/brasika_display-webfont.woff2') format('woff2'),
+       url('/assets/fonts/Brasika/brasika_display-webfont.woff') format('woff'),
+       url('/assets/fonts/Brasika/Brasika Display.ttf') format('truetype'),
+       url('/assets/fonts/Brasika/Brasika Display.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
 
+@font-face {
+  font-family: 'Brasika Display';
+  src: url('/assets/fonts/Brasika/brasika_display.200712-1924-webfont.woff2') format('woff2'),
+       url('/assets/fonts/Brasika/brasika_display.200712-1924-webfont.woff') format('woff'),
+       url('/assets/fonts/Brasika/Brasika Display.200712-1924.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+$my-brand-family: 'Brasika Display';
+$my-plain-family: 'Merriweather, Pacifico';
 $custom-typography: (
-  brand-family: 'Indie Flower, Quicksand',
-  plain-family: 'Merriweather, Pacifico',
+  brand-family: $my-brand-family,
+  plain-family: $my-plain-family,
   bold-weight: 700,
   medium-weight: 500,
   regular-weight: 400,

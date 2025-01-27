@@ -21,6 +21,7 @@
       [@cartButtonAnimation]="cartButtonState"
       (click)="navigateToCart()"
       aria-label="Cart"
+      class ="cart-button"
     >
       <mat-icon>shopping_cart</mat-icon>
       @if(cartItemCount() > 0)

@@ -1,20 +1,18 @@
+<mat-sidenav-container class="app-container">
+  <mat-sidenav #cartDrawer mode="side" position="end" opened="false">
+    <app-cart></app-cart>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <app-header [cartDrawer]="cartDrawer"></app-header>
+    <app-banner></app-banner>
 
-    <mat-sidenav-container class="app-container">
-      <mat-sidenav #cartDrawer mode="side" position="end" opened="false">
-        <app-cart></app-cart>
-      </mat-sidenav>
-      <mat-sidenav-content>
-        <app-header [cartDrawer]="cartDrawer"></app-header>
-        <app-banner></app-banner>
+    <div class="section-divider">
+      <span>Welcome to {{ businessName }}</span>
+    </div>
 
-        <div class="section-divider">
-          <span>Welcome to {{ businessName }}</span>
-        </div>
-
-        <main class="main-content">
-      <router-outlet></router-outlet>
-        </main>
-        <app-footer></app-footer>
-      </mat-sidenav-content>
-    </mat-sidenav-container>
-  
+    <main class="main-content">
+  <router-outlet></router-outlet>
+    </main>
+    <app-footer></app-footer>
+  </mat-sidenav-content>
+</mat-sidenav-container>
